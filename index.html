@@ -24,7 +24,7 @@ Styling and theme are completely up to you. Get Creative! -->
 <head>
 
     <meta charset="UTF-8">
-    <title>Employee Tracker</title>
+    <title>Train Scheduler</title>
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -54,8 +54,8 @@ Styling and theme are completely up to you. Get Creative! -->
 
     <!-- Jumbotron -->
     <div class="jumbotron" style="background-color: black; color: white">
-    <h1 class="text-center">Employee Data Management</h1>
-    <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+    <h1 class="text-center">Train Brain</h1>
+    <h3 class="text-center">A list of useful train times</h3>
     </div>
 
     <div class="row">
@@ -64,17 +64,16 @@ Styling and theme are completely up to you. Get Creative! -->
 
     <!-- Current Employees-->
     <div class="card mb-4">
-        <div class="card-header">Current Employees</div>
+        <div class="card-header">Current Train Schedule</div>
         <div class="card-body">
-            <table class="table table-sm table-hover" id='employee-table'>
+            <table class="table table-sm table-hover" id='train-table'>
             <thead>
                 <tr>
-                <th scope="col">Employee Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">Months Worked</th>
-                <th scope="col">Monthly Rate ($)</th>
-                <th scope="col">Total Billed ($)</th>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency (min)</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">ETA (min)</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,27 +88,27 @@ Styling and theme are completely up to you. Get Creative! -->
     <div class="col-md-12">
     <!-- Add Employee  -->
     <div class="card mb-4">
-            <div class="card-header">Add Employee</div>
+            <div class="card-header">Add Train Inquiry</div>
             <div class="card-body">
     <!-- Entry Form -->
     <form>
         <div class="form-group">
-            <label for="employee-name-input">Employee Name</label>
-            <input class="form-control" id="employee-name-input" placeholder="Jane Doe" type="text">
+            <label for="train-name-input">Train Name</label>
+            <input class="form-control" id="train-name-input" placeholder="Jane Doe" type="text">
         </div>
         <div class="form-group">
-            <label for="role-input">Role</label>
-            <input class="form-control" id="role-input" placeholder="CEO" type="text">
+            <label for="dest-input">Destination</label>
+            <input class="form-control" id="dest-input" placeholder="CEO" type="text">
         </div>
         <div class="form-group">
-            <label for="start-input">Start Date (MM/DD/YYYY)</label>
-            <input class="form-control" id="start-input" placeholder="01/08/1989" type="text">
+            <label for="time-input">First Train Time (HH:mm military time)</label>
+            <input class="form-control" id="time-input" placeholder="01/08/1989" type="text">
         </div>
         <div class="form-group">
-            <label for="rate-input">Monthly Rate</label>
-            <input class="form-control" id="rate-input" placeholder="200000" type="text">
+            <label for="freq-input">Frequency (min)</label>
+            <input class="form-control" id="freq-input" placeholder="200000" type="text">
         </div>
-        <button class="btn btn-primary float-right" id="add-employee-btn">Submit</button>
+        <button class="btn btn-primary float-right" id="add-train-btn">Submit</button>
     </form>
     </div>
     </div>
