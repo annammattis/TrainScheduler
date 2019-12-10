@@ -16,7 +16,7 @@ const firebaseConfig = {
   
   var database = firebase.database();
   
-  // 2. Button for adding Employees
+  // 2. Button for adding trains
   $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
   
@@ -26,7 +26,7 @@ const firebaseConfig = {
     var trainTime = moment($("#time-input").val().trim(), "HH:mm").format("X");
     var trainFreq = $("#freq-input").val().trim();
   
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
       dest: trainDest,
@@ -34,7 +34,7 @@ const firebaseConfig = {
       freq: trainFreq
     };
   
-    // Uploads employee data to the database
+    // Uploads train data to the database
     database.ref().push(newTrain);
   
     // Logs everything to console
@@ -52,7 +52,7 @@ const firebaseConfig = {
     $("#freq-input").val("");
   });
   
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  // 3. Create Firebase event for adding train to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot) {
     console.log('childSnapshot is',childSnapshot.val());
   
@@ -62,35 +62,32 @@ const firebaseConfig = {
     var trainTime = childSnapshot.val().time;
     var trainFreq = childSnapshot.val().freq;
   
-    // Employee Info
+    // Train Info
     console.log(trainName);
     console.log(trainDest);
     console.log(trainTime);
     console.log(trainFreq);
   
-    // Prettify the employee start
+    // Prettify the train start
     var trainStartPretty = moment.unix(trainFreq).format("HH:mm");
   
-    // Calculate the months worked using hardcore math
-    // To calculate the months worked
+    // Calculate the mins using hardcore math
+    // To calculate the mins it takes
     var trainMins = moment().diff(moment(trainFreq, "X"), "mins");
     console.log(trainMins);
   
-//     // Calculate the total billed rate
-//     var empBilled = empMonths * empRate;
-//     console.log(empBilled);
+    // Calculate the total mins it takes
+    var trainTimeTotal = trainMins * trainFreq;
+    console.log(trainTimeTotal);
   
-//     // Create the new row
-//     var newRow = $("<tr>").append(
-//       $("<td>").text(empName),
-//       $("<td>").text(empRole),
-//       $("<td>").text(empStartPretty),
-//       $("<td>").text(empMonths),
-//       $("<td>").text(empRate),
-//       $("<td>").text(empBilled)
-//     );
+    // Create the new row
+    var newRow = $("<tr>").append(
+      $("<td>").text(trainName),
+      $("<td>").text(trainDest),
+      $("<td>").text(trainTime),
+      $("<td>").text(trainFreq)
   
-//     // Append the new row to the table
-//     $("#train-table > tbody").append(newRow);
-//   });
+    // Append the new row to the table
+    $("#train-table > tbody").append(newRow);
+  });
   

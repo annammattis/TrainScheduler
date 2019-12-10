@@ -1,0 +1,19 @@
+#employee-table th,
+td {
+display: inline-block;
+width: 16.575%;
+}
+
+.jumbotron, .card-header {
+    background-color: rgb(137, 156, 103); 
+    color: white
+}
+
+input::placeholder {
+    font-style: italic;
+}
+
+.container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url("https://images7.alphacoders.com/661/661783.jpg");
+}
